@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import { fontFamily } from 'tailwindcss/defaultTheme';
 
 export default {
 	darkMode: ["class"],
@@ -36,6 +37,10 @@ export default {
 					DEFAULT: 'hsl(var(--destructive))',
 					foreground: 'hsl(var(--destructive-foreground))'
 				},
+				success: { // Added from PRD
+					DEFAULT: 'hsl(var(--success))',
+					foreground: 'hsl(var(--success-foreground))'
+				},
 				muted: {
 					DEFAULT: 'hsl(var(--muted))',
 					foreground: 'hsl(var(--muted-foreground))'
@@ -64,10 +69,20 @@ export default {
 				}
 			},
 			borderRadius: {
+        // --radius is now 0.375rem (rounded-md)
+        // Existing structure preserved; values change due to --radius update.
+        // 'rounded-lg' class will now apply 0.375rem.
+        // 'rounded-md' class will now apply calc(0.375rem - 2px).
+        // 'rounded-sm' class will now apply calc(0.375rem - 4px).
+        DEFAULT: 'var(--radius)', // Added: 'rounded' class uses 0.375rem
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
+				sm: 'calc(var(--radius) - 4px)',
+        full: '9999px', // Added from PRD
 			},
+      fontFamily: {
+        sans: ['Inter', ...fontFamily.sans], // Added Inter font from PRD
+      },
 			keyframes: {
 				'accordion-down': {
 					from: {

@@ -1,14 +1,35 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import React from 'react';
+import MainAppLayout from '../components/layout/MainAppLayout';
+import StatCardGrid from '../components/Dashboard/StatCardGrid';
+import RegionBarChart from '../components/Dashboard/RegionBarChart';
+import TotalProductsSold from '../components/Dashboard/TotalProductsSold';
+import WebsiteTrafficChart from '../components/Dashboard/WebsiteTrafficChart';
+import ScoresDisplay from '../components/Dashboard/ScoresDisplay';
 
-const Index = () => {
+const IndexPage: React.FC = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
+    <MainAppLayout>
+      {/* Stat Cards Grid - Full Width */}
+      <StatCardGrid />
+
+      {/* Main Charting Area - 2 Columns on Larger Screens */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {/* Left Column: RegionBarChart and TotalProductsSold stacked vertically */}
+        <div className="lg:col-span-1 flex flex-col gap-6">
+          <RegionBarChart />
+          <TotalProductsSold />
+        </div>
+
+        {/* Right Column: WebsiteTrafficChart taking more space */}
+        <div className="lg:col-span-2">
+          <WebsiteTrafficChart />
+        </div>
       </div>
-    </div>
+
+      {/* Scores Display - Full Width */}
+      <ScoresDisplay />
+    </MainAppLayout>
   );
 };
 
-export default Index;
+export default IndexPage;
